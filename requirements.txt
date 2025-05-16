@@ -10,4 +10,6 @@ langchain-groq
 streamlit
 fastapi[all]
 uvicorn
+docx2txt
+pypdf
 -e .

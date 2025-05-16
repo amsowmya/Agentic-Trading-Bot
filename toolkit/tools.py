@@ -12,7 +12,8 @@ from dotenv import load_dotenv
 from pinecone import Pinecone 
 
 load_dotenv()
-api_wrapper = PolygonAPIWrapper()
+polygon_api_key = os.getenv('POLYON_API_KEY')
+api_wrapper = PolygonAPIWrapper(polygon_api_key=polygon_api_key)
 model_loader = ModelLoader()
 config = load_config()
 

@@ -3,7 +3,7 @@ import requests
 from exception.exceptions import TradingBotException
 import sys
 
-BASE_URL = "http://localhost:8080"
+BASE_URL = "http://localhost:8001"
 
 st.set_page_config(
     page_title="📈 Stock Market Agentic Chatbot",
@@ -34,7 +34,7 @@ with st.sidebar:
             if files:
                 try:
                     with st.spinner("Uploading and processing files..."):
-                        response = requests.posts(f"{BASE_URL}/upload", files=files)
+                        response = requests.post(f"{BASE_URL}/upload", files=files)
                         if response.status_code == 200:
                             st.success("✅ Files uploaded and processed successfully!")
                         else:

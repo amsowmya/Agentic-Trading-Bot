@@ -40,7 +40,6 @@ class ModelLoader:
         print("LLM loading...")
         model_name = self.config['llm']['groq']['model_name']
         groq_model = ChatGroq(groq_api_key=self.groq_api_key, model=model_name)
-        print(groq_model.invoke("hi"))
         
         return groq_model
         

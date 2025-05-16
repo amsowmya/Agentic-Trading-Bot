@@ -94,9 +94,24 @@ class DataIngestion:
             vector_store = PineconeVectorStore(index=index, embedding=self.model_loader.load_embeddings())
             uuids = [str(uuid4()) for _ in range(len(documents))]
             
-            vector_store.add_documents(documents=documents, ids=uuid4)
+            vector_store.add_documents(documents=documents, ids=uuids)
             
         except Exception as e:
             raise TradingBotException(e, sys) 
+        
+    def run_pipeline(self, uploaded_files):
+        """ 
+        Run full data ingestion: load files, split, embed and store.
+        """
+        documents = self.load_document(uploaded_files)
+        if not documents:
+            print("No valid documents found.")
+            return 
+        
+        self.store_in_vector_db(documents)
+        
+        
+if __name__ == "__main__":
+    pass
     
     
